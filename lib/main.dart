@@ -1,115 +1,241 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_testing/home.dart';
+import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/request/request.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+    return GetMaterialApp(
+      title: "สวัสดี",
+      // theme: ThemeData(
+      //     brightness: Brightness.dark, primaryColor: Color(0xFFFDD84D)),
+      // theme: ThemeData(
+      //   primaryColor: Color(0xFFFDD84D),
+      // ),
+      home: Scaffold(
+        backgroundColor: Color(0xFF121416),
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          // toolbarOpacity: 0.5,
+          // bottomOpacity: 1,
+          elevation: 0,
+          backgroundColor: Color(0xFF121416).withOpacity(0.9),
+          // backgroundColor: Colors.transparent,
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          title: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "สวัสดี Jenny",
+                  style: GoogleFonts.kanit(
+                      fontStyle: FontStyle.normal, fontSize: 20),
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Image.asset(
+                    'image/Vector.png',
+                  ),
+                  const SizedBox(
+                    width: 13,
+                  ),
+                  SizedBox(
+                    // alignment: Alignment.center,
+                    height: 30,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.all(1.0),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            // Container()
+                            Text(
+                              "บึงกุ่ม, กรุงเทพๆ",
+                              style: GoogleFonts.kanit(
+                                // fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.white,
+                                // fontSize: 16,
+                              ),
+                            ),
+                            const Opacity(
+                              opacity: 0.7,
+                              child: SizedBox(
+                                width: 30,
+                                child: Icon(
+                                  Icons.chevron_right,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                  ),
+                ]),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+          ),
+          leading: Image.asset('image/Ellipse.png'),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                'image/favorite_border.png',
+                height: 50,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                'image/search.png',
+                height: 50,
+              ),
+              // color: Color(0xFFF6AF3E),
+            ),
+            const SizedBox(
+              width: 12,
+            ),
+          ],
+        ),
+        body: homewidget(),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          // fixedColor: Colors.white,
+          backgroundColor: const Color(0x00121416),
+          fixedColor: Colors.yellow[300],
+          // selectedItemColor: Color(0xBABABA),
+          unselectedItemColor: Colors.white60,
+          // backgroundColor: Colors.white,
+          items: [
+            // Container(),
+            BottomNavigationBarItem(
+              icon: Image.asset("image/Subtract.png"),
+              label: 'หน้าหลัก',
+              // backgroundColor: Color(0xFF121416),
+            ),
+            // BottomNavigationBarItem(
+            //   icon: Image.asset("image/note.png"),
+            //   label: 'รายการจอง',
+            // ),
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                width: 45,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Image.asset("image/note.png"),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        alignment: AlignmentDirectional.center,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 241, 58, 52),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        width: 20,
+                        height: 15,
+                        child: Text(
+                          '5',
+                          style: GoogleFonts.kanit(
+                            fontStyle: FontStyle.normal,
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              label: 'รายการจอง',
+            ),
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                width: 50,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Image.asset("image/messages.png"),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        alignment: AlignmentDirectional.center,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 241, 58, 52),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        width: 20,
+                        height: 15,
+                        child: Text(
+                          '1',
+                          style: GoogleFonts.kanit(
+                            fontStyle: FontStyle.normal,
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              label: 'ข้อความ',
+            ),
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                width: 45,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    Image.asset("image/notification_active.png"),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        alignment: AlignmentDirectional.center,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 241, 58, 52),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        width: 20,
+                        height: 15,
+                        child: Text(
+                          '10',
+                          style: GoogleFonts.kanit(
+                            fontStyle: FontStyle.normal,
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              label: 'แจ้งเตือน',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset("image/user.png"),
+              label: 'บัญชี',
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
